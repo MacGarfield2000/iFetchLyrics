@@ -5,3 +5,9 @@
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
 #endif
+
+
+static __inline__ CGFloat RandomFloatBetween(CGFloat a, CGFloat b)
+{
+    return a + (b - a) * ((CGFloat) random() / (CGFloat) RAND_MAX);
+}

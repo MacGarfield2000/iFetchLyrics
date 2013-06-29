@@ -9,64 +9,44 @@
 
 @implementation LyricsallFetcher
 
-
-- (NSString *)fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
-	//NSLog(@" artist %@ album %@ title %@", artist, album, title);
-	artist = [artist stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	NSString *result = nil;
-
-
-	result = [self  _fetchLyricsForArtist:artist album:album title:title];
-	if (result) return result;
-
-
-	while ([self replaceLastRoundBracketed:title])
-	{
-		title = [self replaceLastRoundBracketed:title];
-
-		result = [self  _fetchLyricsForArtist:artist album:album title:title];
-		if (result)
-			return result;
-	}
-
-	while ([self replaceLastSquareBracketed:title])
-	{
-		title = [self replaceLastSquareBracketed:title];
-
-		result = [self  _fetchLyricsForArtist:artist album:album title:title];
-		if (result)
-			return result;
-	}
-
-	return nil;
-}
-
+// 39% succ 4315 fail 6740
 - (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
-	sleep(1);
-	NSString *urlStr = [[[[NSString stringWithFormat:@"http://lyricsall.com/%@_-_%@.html", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"_"] lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	sleep(RandomFloatBetween(0.5,1.5));
+	NSString *urlStr = [[[NSString stringWithFormat:@"http://lyricsall.com/%@_-_%@", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"_"] lowercaseString];
+
+	if ([urlStr length] > 56)
+		urlStr = [urlStr substringToIndex:56];
+
+	urlStr = [[urlStr stringByAppendingString:@".html"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
-	if ([cont rangeOfString:@"class=\"lyrictext\">"].location == NSNotFound)
-	{
+	if ([cont rangeOfString:@"class=\"lyrictext\">"].location == NSNotFound) {
 		return nil;
 	}
 
-	NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
-	NSString *start = [[newline componentsSeparatedByString:@"class=\"lyrictext\">"] objectAtIndex:1];
-	NSString *end = [[start componentsSeparatedByString:@"class=\"headlinelyric\""] objectAtIndex:0];
-	NSString *final = [end stringByConvertingHTMLToPlainText];
+	@try {
+		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
+		NSString *start = [newline componentsSeparatedByString:@"class=\"lyrictext\">"][1];
+		NSString *end = [start componentsSeparatedByString:@"class=\"headlinelyric\""][0];
+		NSString *final = [end stringByConvertingHTMLToPlainText];
 
 
-	NSMutableString *tmp = [NSMutableString new];
-	for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"])
-	{
+		NSMutableString *tmp = [NSMutableString new];
+		for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"]) {
 
-		[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-		[tmp appendString:@"\n"];
+			[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+			[tmp appendString:@"\n"];
+		}
+
+		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+		if ([final2 length] == 0)
+			return nil;
+		
+		return final2;
+	} @catch (id e) {
+		return nil;
 	}
-
-	return [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 @end

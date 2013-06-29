@@ -12,7 +12,7 @@
 
 - (NSString *)fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title;
 
-- (NSString *)replaceLastRoundBracketed:(NSString *)title;
-- (NSString *)replaceLastSquareBracketed:(NSString *)title;
+//- (NSString *)replaceLastRoundBracketed:(NSString *)title;
+//- (NSString *)replaceLastSquareBracketed:(NSString *)title;
 
 @end

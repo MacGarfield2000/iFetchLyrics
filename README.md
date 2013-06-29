@@ -7,10 +7,11 @@ iFetchLyrics can automatically fetch the lyrics for  songs in your iTunes music 
   
 **Accuracy Info:** Note that fetching lyrics depends on accurate title and artist information. If your music is not properly 'tagged', consider using a tool like '[MusicBrainz Picard](https://musicbrainz.org/doc/MusicBrainz_Picard)' to automatically correct this information for all your music tracks.
 
-**Legal Info:** Note that depending on your home country, fetching lyrics may only be legal for music you have legally purchased, or it not be legal at all. Before continuing make sure you have: 
+**Legal Info:** Note that depending on your home country, fetching lyrics may only be legal for music you have legally purchased, or it may not be legal at all. Before continuing make sure you have: 
 
 1. permissions from music copyright holders to fetch lyrics for your music
-2. permissions from [lyrics.wikia.com](http://http://lyrics.wikia.com/Lyrics_Wiki), [lyrics.n7.pl](http://lyrics.n7.pl), [metrolyrics.com](http://www.metrolyrics.com) and [lyricsall.com](http://lyricsall.com) to fetch lyrics from their websites
+2. permissions from [lyrics.wikia.com](http://http://lyrics.wikia.com/Lyrics_Wiki), [lyrics.n7.pl](http://lyrics.n7.pl), [metrolyrics.com](http://www.metrolyrics.com), [lyricsall.com](http://lyricsall.com), [lyrster.com](http://www.lyrster.com) and [lyricsjoy.com](http://www.lyricsjoy.com) to fetch lyrics from their websites
 
 
 **Download:** Download v1.0 of iFetchLyrics [here](https://github.com/MacGarfield/iFetchLyrics/raw/master/BinaryReleases/iFetchLyrics-1.0.zip)
+
