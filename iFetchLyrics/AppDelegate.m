@@ -118,7 +118,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	self.fetchers = [NSMutableArray arrayWithArray:@[[LyricsallFetcher new], [WikiaFetcher new], [MetroFetcher new], [Lyricsn7plFetcher new], [LyrsterFetcher new], [LyricsjoyFetcher new]]];
+	self.fetchers = [NSMutableArray arrayWithArray:@[[LyricsallFetcher new], [WikiaFetcher new], [MetroFetcher new], [Lyricsn7plFetcher new], [LyrsterFetcher new], /*[LyricsjoyFetcher new]*/]];
 	
 	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
 	self.playlists = [[(iTunes.sources)[0] userPlaylists] arrayByApplyingSelector:@selector(name)];

@@ -21,36 +21,26 @@
 	}
 
 	@try {
-		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"</span>" withString:@"XYZNEWLINE"];
-		NSString *start = [newline componentsSeparatedByString:@"<div id=\"lyrics-body\">"][1];
-		NSString *start2 = [start componentsSeparatedByString:@"<link"][1];
-		NSString *start3 = [start2 substringFromIndex:[start2 rangeOfString:@"/>"].location+2];
-		NSString *end = [start3 componentsSeparatedByString:@"<link"][0];
-		NSString *final = [end stringByConvertingHTMLToPlainText];
+		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br/>" withString:@"XYZNEWLINE"];
+		NSString *start = [newline substringFromIndex:[newline rangeOfString:@"<p class='verse'>"].location+17];
+		NSString *end = [start componentsSeparatedByString:@"</div>"][0];
+		NSString *final = [end stringByReplacingOccurrencesOfString:@"<p class='verse'>" withString:@"XYZNEWLINE"];
+		NSString *final1 = [final stringByReplacingOccurrencesOfString:@"</p>" withString:@"XYZNEWLINE"];
+		NSString *final2 = [final1 stringByConvertingHTMLToPlainText];
 
 
 		NSMutableString *tmp = [NSMutableString new];
-		BOOL skipNext = FALSE;
-		for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"]) {
-			if ([line rangeOfString:@"http://www.metrolyrics.com/"].location == NSNotFound) {
-				if (skipNext) {
-					skipNext = FALSE;
-				}
-				else {
-					[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-					[tmp appendString:@"\n"];
-				}
-			}
-			else
-				skipNext = TRUE;
+		for (NSString *line in [final2 componentsSeparatedByString:@"XYZNEWLINE"]) {
+			[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+			[tmp appendString:@"\n"];
 		}
 
-		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		NSString *final3 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-		if ([final2 length] == 0)
+		if ([final3 length] == 0)
 			return nil;
 
-		return final2;
+		return final3;
 
 	} @catch (id e) {
 		return nil;
