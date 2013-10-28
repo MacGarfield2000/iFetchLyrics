@@ -13,5 +13,5 @@ iFetchLyrics can automatically fetch the lyrics for  songs in your iTunes music 
 2. permissions from [lyrics.wikia.com](http://http://lyrics.wikia.com/Lyrics_Wiki), [lyrics.n7.pl](http://lyrics.n7.pl), [metrolyrics.com](http://www.metrolyrics.com), [lyricsall.com](http://lyricsall.com) and [lyrster.com](http://www.lyrster.com) to fetch lyrics from their websites
 
 
-**Download:** Download v1.1 of iFetchLyrics [here](https://github.com/MacGarfield/iFetchLyrics/raw/master/BinaryReleases/iFetchLyrics-1.1.zip)
+**Download:** Download v1.2 of iFetchLyrics [here](https://github.com/MacGarfield/iFetchLyrics/raw/master/BinaryReleases/iFetchLyrics-1.2.zip)
 

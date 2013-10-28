@@ -27,11 +27,20 @@
 
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"XYZNEWLINE"];
+		newline = [newline stringByReplacingOccurrencesOfString:@"<br/>" withString:@"XYZNEWLINE"];
 		NSString *start = [newline componentsSeparatedByString:@"<div id=\"lyrics\">"][1];
 		NSString *end = [start componentsSeparatedByString:@"</div>"][0];
 		NSString *final = [end stringByConvertingHTMLToPlainText];
-		NSString *final2 = [final stringByReplacingOccurrencesOfString:@"XYZNEWLINE" withString:@"\n"];
-		final2 = [final2 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+
+		NSMutableString *tmp = [NSMutableString new];
+		for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"]) {
+			[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+			[tmp appendString:@"\n"];
+		}
+
+		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
 
 		if ([final2 length] == 0)
 			return nil;

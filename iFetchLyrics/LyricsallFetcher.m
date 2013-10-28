@@ -34,6 +34,8 @@
 
 		NSMutableString *tmp = [NSMutableString new];
 		for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"]) {
+			if ([line rangeOfString:@"function.preg-replace"].location != NSNotFound)
+				continue;
 
 			[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 			[tmp appendString:@"\n"];
@@ -41,6 +43,13 @@
 
 		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"Ă¤" withString:@"ä"];
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"Ăś" withString:@"ö"];
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"Ăź" withString:@"ü"];
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"Ă" withString:@"ß"];
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
+		final2 = [final2 stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
+		
 		if ([final2 length] == 0)
 			return nil;
 		

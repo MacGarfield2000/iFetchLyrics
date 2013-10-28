@@ -25,6 +25,7 @@
 
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
+		newline = [newline stringByReplacingOccurrencesOfString:@"<br />" withString:@"XYZNEWLINE"];
 		NSString *start = [newline componentsSeparatedByString:@"Lyrics:XYZNEWLINEXYZNEWLINE<div class=\"tekst\">"][1];
 		NSString *end = [start componentsSeparatedByString:@"</div>"][0];
 		NSString *final = [end stringByConvertingHTMLToPlainText];

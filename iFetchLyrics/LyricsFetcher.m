@@ -27,7 +27,8 @@
 
 
 	result = [self  _fetchLyricsForArtist:artist album:album title:title];
-	if (result) return result;
+	if (result)
+		return result;
 
 
 	while ([self replaceLastRoundBracketed:title]) {
