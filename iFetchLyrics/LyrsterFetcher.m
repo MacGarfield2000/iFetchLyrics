@@ -10,7 +10,7 @@
 @implementation LyrsterFetcher
 
 // 60% succ 6787 fail 4445
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
 	title = [title stringByReplacingOccurrencesOfString:@"(" withString:@""];
 	title = [title stringByReplacingOccurrencesOfString:@")" withString:@""];
@@ -41,6 +41,8 @@
 
 		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
+		if ([final2 hasPrefix:@"Shortcut to"] && [final2 hasSuffix:@"..."])
+			return nil;
 
 		if ([final2 length] == 0)
 			return nil;

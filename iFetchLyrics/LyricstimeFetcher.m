@@ -9,7 +9,7 @@
 
 @implementation LyricstimeFetcher
 
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(5.0,15.0));
 	title = [title stringByReplacingOccurrencesOfString:@"(" withString:@""];
 	title = [title stringByReplacingOccurrencesOfString:@")" withString:@""];

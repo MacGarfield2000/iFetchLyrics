@@ -10,7 +10,7 @@
 @implementation WikiaFetcher
 
 // 88% succ 9905 fail 1328
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
 	NSString *urlStr = [[[NSString stringWithFormat:@"http://lyrics.wikia.com/%@:%@", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"_"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 

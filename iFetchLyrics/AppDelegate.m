@@ -79,6 +79,11 @@
 					});
 					
 					if (lyrics) {
+#ifdef DEBUG
+						lyrics = [lyrics stringByAppendingString:[NSString stringWithFormat:@"\n\nFetched by iFetchLyrics v%@ from '%@'",
+								  [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+								  [[fetcher className] stringByReplacingOccurrencesOfString:@"Fetcher" withString:@""]]];
+#endif
 						[track setLyrics:lyrics];
 						if ([lyrics length] < 20 && [lyrics rangeOfString:@"instrumental" options:NSCaseInsensitiveSearch].location == NSNotFound)
 							NSLog(@"Warning: suspected damaged lyrics fetched: artist: %@ title: %@ lyrics: %@", track.artist, track.name, lyrics);
@@ -119,7 +124,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	self.fetchers = [NSMutableArray arrayWithArray:@[[LyricsallFetcher new], [WikiaFetcher new], [MetroFetcher new], [Lyricsn7plFetcher new], [LyrsterFetcher new], /*[LyricsjoyFetcher new]*/]];
-	
+
 
 
 	[self.window setContentView:self.view1];
@@ -137,12 +142,14 @@
 										 title:@"Seven Nation Army"] lowercaseString];
 
 		assert(l1 && [l1 rangeOfString:@"queen"].location != NSNotFound);
+		assert([[l1 componentsSeparatedByString:@"\n"] count] > 5);
 
 		NSString *l2 = [[fetcher fetchLyricsForArtist:@"Garbage"
 										 album:@""
 										 title:@"As Heaven Is Wide"] lowercaseString];
 
 		assert(l2 && [l2 rangeOfString:@"angels"].location != NSNotFound);
+		assert([[l2 componentsSeparatedByString:@"\n"] count] > 5);
 	}
 #endif
 }

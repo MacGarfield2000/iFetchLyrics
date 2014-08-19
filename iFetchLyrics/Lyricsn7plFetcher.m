@@ -10,7 +10,7 @@
 @implementation Lyricsn7plFetcher
 
 // 29% succ 3215 fail 8018
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
 	if (!artist || ![artist length])
 		return nil;
@@ -26,6 +26,7 @@
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
 		newline = [newline stringByReplacingOccurrencesOfString:@"<br />" withString:@"XYZNEWLINE"];
+		newline = [newline stringByReplacingOccurrencesOfString:@"<BR>" withString:@"XYZNEWLINE"];
 		NSString *start = [newline componentsSeparatedByString:@"Lyrics:XYZNEWLINEXYZNEWLINE<div class=\"tekst\">"][1];
 		NSString *end = [start componentsSeparatedByString:@"</div>"][0];
 		NSString *final = [end stringByConvertingHTMLToPlainText];

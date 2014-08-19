@@ -10,7 +10,7 @@
 @implementation LyricsjoyFetcher
 
 // 64% succ 7133 fail 4100
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
 	title = [title stringByReplacingOccurrencesOfString:@"  " withString:@" "];
 	title = [title stringByReplacingOccurrencesOfString:@"  " withString:@" "];

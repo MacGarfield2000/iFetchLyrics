@@ -9,9 +9,27 @@
 
 @implementation LyricsFetcher
 
-- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+- (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	[[NSException exceptionWithName:@"bad" reason:@"exp" userInfo:nil] raise];
 	return nil;
+}
+
+- (NSString *)_fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
+	NSString *lyrics = [self __fetchLyricsForArtist:artist album:album title:title];
+
+	if (!lyrics && ![lyrics length])
+		return nil;
+
+	if ([lyrics length] / [[lyrics componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count] > 200)
+	{
+		NSLog([NSString stringWithFormat:@"Warning: ignoring lyrics for artist '%@' and title '%@' from fetcher '%@' for lack of linebreaks.", artist, title, [self className]]);
+		return nil;
+	}
+
+//	assert([lyrics rangeOfString:@"license"].location == NSNotFound);
+//	assert([lyrics rangeOfString:@"Download"].location == NSNotFound);
+
+	return lyrics;
 }
 
 - (NSString *)fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
@@ -25,16 +43,14 @@
 	}
 	NSString *result = nil;
 
-
-	result = [self  _fetchLyricsForArtist:artist album:album title:title];
+	result = [self _fetchLyricsForArtist:artist album:album title:title];
 	if (result)
 		return result;
-
 
 	while ([self replaceLastRoundBracketed:title]) {
 		title = [self replaceLastRoundBracketed:title];
 
-		result = [self  _fetchLyricsForArtist:artist album:album title:title];
+		result = [self _fetchLyricsForArtist:artist album:album title:title];
 		if (result)
 			return result;
 	}
@@ -42,10 +58,11 @@
 	while ([self replaceLastSquareBracketed:title]) {
 		title = [self replaceLastSquareBracketed:title];
 
-		result = [self  _fetchLyricsForArtist:artist album:album title:title];
+		result = [self _fetchLyricsForArtist:artist album:album title:title];
 		if (result)
 			return result;
 	}
+
 
 	return nil;
 }
