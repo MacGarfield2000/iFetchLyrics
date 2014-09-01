@@ -141,6 +141,7 @@
 										 album:@""
 										 title:@"Seven Nation Army"] lowercaseString];
 
+		assert(l1 && [l1 rangeOfString:@"=="].location != NSNotFound);
 		assert(l1 && [l1 rangeOfString:@"queen"].location != NSNotFound);
 		assert([[l1 componentsSeparatedByString:@"\n"] count] > 5);
 
@@ -148,6 +149,7 @@
 										 album:@""
 										 title:@"As Heaven Is Wide"] lowercaseString];
 
+		assert(l2 && [l2 rangeOfString:@"=="].location == NSNotFound);
 		assert(l2 && [l2 rangeOfString:@"angels"].location != NSNotFound);
 		assert([[l2 componentsSeparatedByString:@"\n"] count] > 5);
 	}

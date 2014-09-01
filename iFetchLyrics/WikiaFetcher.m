@@ -19,7 +19,8 @@
 	if ([cont rangeOfString:@"<div class='lyricbox'>"].location == NSNotFound) {
 		return nil;
 	}
-	else if ([cont rangeOfString:@"<a href=\"/Category:Instrumental\" title=\"Instrumental\"><img alt=\"TrebleClef\""].location != NSNotFound) {
+	else if ([cont rangeOfString:@"<a href=\"/Category:Instrumental\" title=\"Instrumental\"><img alt=\"TrebleClef\""].location != NSNotFound ||
+			 [cont rangeOfString:@"title=\"Category:Instrumental\">Instrumental</a>"].location != NSNotFound) {
 		return @"[Instrumental]";
 	}
 
@@ -32,8 +33,10 @@
 		else
 			start = comp[1];
 		NSString *start2 = [start componentsSeparatedByString:@"</div>"][1];
-		NSString *end = [start2 componentsSeparatedByString:@"<div class='rtMatcher'>"][0];
-		NSString *final = [end stringByConvertingHTMLToPlainText];
+		NSString *start3 = [start2 componentsSeparatedByString:@"script>"][1];
+		NSString *end = [start3 componentsSeparatedByString:@"<div class='rtMatcher'>"][0];
+		NSString *end2 = [end componentsSeparatedByString:@"<script"][0];
+		NSString *final = [end2 stringByConvertingHTMLToPlainText];
 		NSString *final2 = [final stringByReplacingOccurrencesOfString:@"XYZNEWLINE" withString:@"\n"];
 		final2 = [final2 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
