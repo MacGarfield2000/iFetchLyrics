@@ -16,15 +16,17 @@
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
-	if ([cont rangeOfString:@"<div id=\"lyrics-body\">"].location == NSNotFound || [cont rangeOfString:@"Unfortunately, we don't have the lyrics"].location != NSNotFound) {
+	if ([cont rangeOfString:@"<div id=\"lyrics-body-text\""].location == NSNotFound || [cont rangeOfString:@"Unfortunately, we don't have the lyrics"].location != NSNotFound) {
 		return nil;
 	}
 
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br/>" withString:@"XYZNEWLINE"];
-		NSString *start = [newline substringFromIndex:[newline rangeOfString:@"<p class='verse'>"].location+17];
-		NSString *end = [start componentsSeparatedByString:@"</div>"][0];
-		NSString *final = [end stringByReplacingOccurrencesOfString:@"<p class='verse'>" withString:@"XYZNEWLINE"];
+		NSString *newline2 = [newline stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
+		NSString *start = [newline2 substringFromIndex:[newline rangeOfString:@"<p class='verse'>"].location+17];
+		NSString *end = [start componentsSeparatedByString:@"<p class=\"writers\">"][0];
+        NSString *end2 = [end componentsSeparatedByString:@"<div class=\"lyrics-bottom\">"][0];
+		NSString *final = [end2 stringByReplacingOccurrencesOfString:@"<p class='verse'>" withString:@"XYZNEWLINE"];
 		NSString *final1 = [final stringByReplacingOccurrencesOfString:@"</p>" withString:@"XYZNEWLINE"];
 		NSString *final2 = [final1 stringByConvertingHTMLToPlainText];
 

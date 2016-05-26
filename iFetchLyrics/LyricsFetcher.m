@@ -47,6 +47,13 @@
 	if (result)
 		return result;
 
+	if ([title rangeOfString:@" & "].location != NSNotFound) {
+		result = [self _fetchLyricsForArtist:artist album:album title:[title stringByReplacingOccurrencesOfString:@" & " withString:@" and "]];
+		if (result)
+			return result;
+	}
+
+	
 	while ([self replaceLastRoundBracketed:title]) {
 		title = [self replaceLastRoundBracketed:title];
 
@@ -55,10 +62,22 @@
 			return result;
 	}
 
+	if ([title rangeOfString:@" & "].location != NSNotFound) {
+		result = [self _fetchLyricsForArtist:artist album:album title:[title stringByReplacingOccurrencesOfString:@" & " withString:@" and "]];
+		if (result)
+			return result;
+	}
+
 	while ([self replaceLastSquareBracketed:title]) {
 		title = [self replaceLastSquareBracketed:title];
 
 		result = [self _fetchLyricsForArtist:artist album:album title:title];
+		if (result)
+			return result;
+	}
+
+	if ([title rangeOfString:@" & "].location != NSNotFound) {
+		result = [self _fetchLyricsForArtist:artist album:album title:[title stringByReplacingOccurrencesOfString:@" & " withString:@" and "]];
 		if (result)
 			return result;
 	}

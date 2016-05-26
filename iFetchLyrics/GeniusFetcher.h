@@ -1,5 +1,5 @@
 //
-//  LyricstimeFetcher.h
+//  LyricsmodeFetcher.h
 //  iFetchLyrics
 //
 //  Public Domain
@@ -7,6 +7,6 @@
 
 #import "LyricsFetcher.h"
 
-@interface LyricstimeFetcher : LyricsFetcher
+@interface GeniusFetcher : LyricsFetcher
 
 @end

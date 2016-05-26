@@ -19,11 +19,17 @@
 		B91114E3177A249A006A2C95 /* LyricsallFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B91114E2177A2354006A2C95 /* LyricsallFetcher.m */; };
 		B91114E6177A2634006A2C95 /* Lyricsn7plFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B91114E5177A2634006A2C95 /* Lyricsn7plFetcher.m */; };
 		B91114E8177A4580006A2C95 /* iTunes.app in Sources */ = {isa = PBXBuildFile; fileRef = B91114E7177A4580006A2C95 /* iTunes.app */; };
+		B96BB5981CF61E3E00EEDEF3 /* LyricsmodeFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB5971CF61E3E00EEDEF3 /* LyricsmodeFetcher.m */; };
+		B96BB59B1CF6305600EEDEF3 /* GeniusFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB59A1CF6305600EEDEF3 /* GeniusFetcher.m */; };
+		B96BB59E1CF632E700EEDEF3 /* Lyrics365Fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB59D1CF632E700EEDEF3 /* Lyrics365Fetcher.m */; };
+		B96BB5A11CF6373200EEDEF3 /* SonglyricsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB5A01CF6373200EEDEF3 /* SonglyricsFetcher.m */; };
+		B96BB5A41CF639B300EEDEF3 /* ElyricsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB5A31CF639B300EEDEF3 /* ElyricsFetcher.m */; };
+		B96BB5A71CF63B8A00EEDEF3 /* AzlyricsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB5A61CF63B8A00EEDEF3 /* AzlyricsFetcher.m */; };
+		B96BB5AA1CF63FD600EEDEF3 /* LyricsmaniaFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BB5A91CF63FD600EEDEF3 /* LyricsmaniaFetcher.m */; };
 		B9E6C8AB177DAB1500E4ED2E /* iFetchLyrics.icns in Resources */ = {isa = PBXBuildFile; fileRef = B9E6C8AA177DAB1500E4ED2E /* iFetchLyrics.icns */; };
 		B9F9174F177AE9260000088A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F9174E177AE9260000088A /* ScriptingBridge.framework */; };
 		B9F91758177B764D0000088A /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F91757177B764D0000088A /* NSMutableArray+Shuffling.m */; };
 		B9F9175F177C88080000088A /* LyrsterFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F9175E177C88080000088A /* LyrsterFetcher.m */; };
-		B9F91765177C8BA40000088A /* LyricsjoyFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F91764177C8BA40000088A /* LyricsjoyFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -67,19 +73,27 @@
 		B91114E4177A2634006A2C95 /* Lyricsn7plFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lyricsn7plFetcher.h; sourceTree = "<group>"; };
 		B91114E5177A2634006A2C95 /* Lyricsn7plFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lyricsn7plFetcher.m; sourceTree = "<group>"; };
 		B91114E7177A4580006A2C95 /* iTunes.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = iTunes.app; path = /Applications/iTunes.app; sourceTree = "<absolute>"; };
+		B96BB5961CF61E3E00EEDEF3 /* LyricsmodeFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsmodeFetcher.h; sourceTree = "<group>"; };
+		B96BB5971CF61E3E00EEDEF3 /* LyricsmodeFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsmodeFetcher.m; sourceTree = "<group>"; };
+		B96BB5991CF6305600EEDEF3 /* GeniusFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeniusFetcher.h; sourceTree = "<group>"; };
+		B96BB59A1CF6305600EEDEF3 /* GeniusFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeniusFetcher.m; sourceTree = "<group>"; };
+		B96BB59C1CF632E700EEDEF3 /* Lyrics365Fetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lyrics365Fetcher.h; sourceTree = "<group>"; };
+		B96BB59D1CF632E700EEDEF3 /* Lyrics365Fetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lyrics365Fetcher.m; sourceTree = "<group>"; };
+		B96BB59F1CF6373200EEDEF3 /* SonglyricsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonglyricsFetcher.h; sourceTree = "<group>"; };
+		B96BB5A01CF6373200EEDEF3 /* SonglyricsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonglyricsFetcher.m; sourceTree = "<group>"; };
+		B96BB5A21CF639B300EEDEF3 /* ElyricsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElyricsFetcher.h; sourceTree = "<group>"; };
+		B96BB5A31CF639B300EEDEF3 /* ElyricsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElyricsFetcher.m; sourceTree = "<group>"; };
+		B96BB5A51CF63B8A00EEDEF3 /* AzlyricsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzlyricsFetcher.h; sourceTree = "<group>"; };
+		B96BB5A61CF63B8A00EEDEF3 /* AzlyricsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzlyricsFetcher.m; sourceTree = "<group>"; };
+		B96BB5A81CF63FD600EEDEF3 /* LyricsmaniaFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsmaniaFetcher.h; sourceTree = "<group>"; };
+		B96BB5A91CF63FD600EEDEF3 /* LyricsmaniaFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsmaniaFetcher.m; sourceTree = "<group>"; };
 		B9E6C8AA177DAB1500E4ED2E /* iFetchLyrics.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iFetchLyrics.icns; sourceTree = SOURCE_ROOT; };
 		B9F9174E177AE9260000088A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		B9F91756177B764D0000088A /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+Shuffling.h"; path = "Dependencies/NSMutableArray+Shuffling.h"; sourceTree = SOURCE_ROOT; };
 		B9F91757177B764D0000088A /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Shuffling.m"; path = "Dependencies/NSMutableArray+Shuffling.m"; sourceTree = SOURCE_ROOT; };
-		B9F9175A177C86D70000088A /* SeeklyricsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeklyricsFetcher.h; sourceTree = "<group>"; };
-		B9F9175B177C86D70000088A /* SeeklyricsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeklyricsFetcher.m; sourceTree = "<group>"; };
 		B9F9175D177C88080000088A /* LyrsterFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyrsterFetcher.h; sourceTree = "<group>"; };
 		B9F9175E177C88080000088A /* LyrsterFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyrsterFetcher.m; sourceTree = "<group>"; };
-		B9F91760177C895F0000088A /* LyricstimeFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LyricstimeFetcher.h; sourceTree = "<group>"; };
-		B9F91761177C895F0000088A /* LyricstimeFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LyricstimeFetcher.m; sourceTree = "<group>"; };
 		B9F91762177C8AC10000088A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
-		B9F91763177C8BA30000088A /* LyricsjoyFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsjoyFetcher.h; sourceTree = "<group>"; };
-		B9F91764177C8BA40000088A /* LyricsjoyFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsjoyFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +146,6 @@
 				B91114D8177A15EC006A2C95 /* LyricsFetcher.h */,
 				B91114D9177A15EC006A2C95 /* LyricsFetcher.m */,
 				B9E6C8AC177E115000E4ED2E /* Fetchers */,
-				B9E6C8AD177E115D00E4ED2E /* DefunctFetchers */,
 				B9E6C8AE177E13F000E4ED2E /* Dependencies */,
 				B91114BC1779FD76006A2C95 /* Supporting Files */,
 			);
@@ -158,8 +171,6 @@
 			children = (
 				B91114DB177A1624006A2C95 /* WikiaFetcher.h */,
 				B91114DC177A1624006A2C95 /* WikiaFetcher.m */,
-				B9F91763177C8BA30000088A /* LyricsjoyFetcher.h */,
-				B9F91764177C8BA40000088A /* LyricsjoyFetcher.m */,
 				B9F9175D177C88080000088A /* LyrsterFetcher.h */,
 				B9F9175E177C88080000088A /* LyrsterFetcher.m */,
 				B91114DE177A17C0006A2C95 /* MetroFetcher.h */,
@@ -168,19 +179,22 @@
 				B91114E2177A2354006A2C95 /* LyricsallFetcher.m */,
 				B91114E4177A2634006A2C95 /* Lyricsn7plFetcher.h */,
 				B91114E5177A2634006A2C95 /* Lyricsn7plFetcher.m */,
+				B96BB5961CF61E3E00EEDEF3 /* LyricsmodeFetcher.h */,
+				B96BB5971CF61E3E00EEDEF3 /* LyricsmodeFetcher.m */,
+				B96BB5991CF6305600EEDEF3 /* GeniusFetcher.h */,
+				B96BB59A1CF6305600EEDEF3 /* GeniusFetcher.m */,
+				B96BB59C1CF632E700EEDEF3 /* Lyrics365Fetcher.h */,
+				B96BB59D1CF632E700EEDEF3 /* Lyrics365Fetcher.m */,
+				B96BB59F1CF6373200EEDEF3 /* SonglyricsFetcher.h */,
+				B96BB5A01CF6373200EEDEF3 /* SonglyricsFetcher.m */,
+				B96BB5A21CF639B300EEDEF3 /* ElyricsFetcher.h */,
+				B96BB5A31CF639B300EEDEF3 /* ElyricsFetcher.m */,
+				B96BB5A51CF63B8A00EEDEF3 /* AzlyricsFetcher.h */,
+				B96BB5A61CF63B8A00EEDEF3 /* AzlyricsFetcher.m */,
+				B96BB5A81CF63FD600EEDEF3 /* LyricsmaniaFetcher.h */,
+				B96BB5A91CF63FD600EEDEF3 /* LyricsmaniaFetcher.m */,
 			);
 			name = Fetchers;
-			sourceTree = "<group>";
-		};
-		B9E6C8AD177E115D00E4ED2E /* DefunctFetchers */ = {
-			isa = PBXGroup;
-			children = (
-				B9F91760177C895F0000088A /* LyricstimeFetcher.h */,
-				B9F91761177C895F0000088A /* LyricstimeFetcher.m */,
-				B9F9175A177C86D70000088A /* SeeklyricsFetcher.h */,
-				B9F9175B177C86D70000088A /* SeeklyricsFetcher.m */,
-			);
-			name = DefunctFetchers;
 			sourceTree = "<group>";
 		};
 		B9E6C8AE177E13F000E4ED2E /* Dependencies */ = {
@@ -261,18 +275,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96BB5AA1CF63FD600EEDEF3 /* LyricsmaniaFetcher.m in Sources */,
 				B91114E8177A4580006A2C95 /* iTunes.app in Sources */,
 				B91114C91779FD76006A2C95 /* AppDelegate.m in Sources */,
 				B91114D4177A02F7006A2C95 /* NSString+HTML.m in Sources */,
 				B91114D7177A037B006A2C95 /* GTMNSString+HTML.m in Sources */,
+				B96BB59B1CF6305600EEDEF3 /* GeniusFetcher.m in Sources */,
 				B91114DA177A15EC006A2C95 /* LyricsFetcher.m in Sources */,
 				B91114DD177A1624006A2C95 /* WikiaFetcher.m in Sources */,
+				B96BB5A41CF639B300EEDEF3 /* ElyricsFetcher.m in Sources */,
+				B96BB5A71CF63B8A00EEDEF3 /* AzlyricsFetcher.m in Sources */,
 				B91114E0177A17C0006A2C95 /* MetroFetcher.m in Sources */,
 				B91114E3177A249A006A2C95 /* LyricsallFetcher.m in Sources */,
 				B91114E6177A2634006A2C95 /* Lyricsn7plFetcher.m in Sources */,
 				B9F91758177B764D0000088A /* NSMutableArray+Shuffling.m in Sources */,
+				B96BB5A11CF6373200EEDEF3 /* SonglyricsFetcher.m in Sources */,
+				B96BB5981CF61E3E00EEDEF3 /* LyricsmodeFetcher.m in Sources */,
+				B96BB59E1CF632E700EEDEF3 /* Lyrics365Fetcher.m in Sources */,
 				B9F9175F177C88080000088A /* LyrsterFetcher.m in Sources */,
-				B9F91765177C8BA40000088A /* LyricsjoyFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

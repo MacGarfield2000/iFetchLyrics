@@ -50,7 +50,7 @@
 		if ([final2 rangeOfString:@"do not have the complete song"].location != NSNotFound)
 			return nil;
 
-		return final2;
+		return  ([[final2 lowercaseString] isEqualToString:@"instrumental"]) ? @"[Instrumental]" : final2;
 	} @catch (id e) {
 		return nil;
 	}

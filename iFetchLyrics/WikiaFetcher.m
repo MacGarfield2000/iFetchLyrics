@@ -12,7 +12,10 @@
 // 88% succ 9905 fail 1328
 - (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
-	NSString *urlStr = [[[NSString stringWithFormat:@"http://lyrics.wikia.com/%@:%@", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"_"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *urlStr = [NSString stringWithFormat:@"http://lyrics.wikia.com/%@:%@", artist, title];
+	urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+	urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	urlStr = [urlStr stringByReplacingOccurrencesOfString:@"?" withString:@"%3F"];
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
@@ -32,11 +35,8 @@
 			start = comp[2];
 		else
 			start = comp[1];
-		NSString *start2 = [start componentsSeparatedByString:@"</div>"][1];
-		NSString *start3 = [start2 componentsSeparatedByString:@"script>"][1];
-		NSString *end = [start3 componentsSeparatedByString:@"<div class='rtMatcher'>"][0];
-		NSString *end2 = [end componentsSeparatedByString:@"<script"][0];
-		NSString *final = [end2 stringByConvertingHTMLToPlainText];
+		NSString *end = [start componentsSeparatedByString:@"<!--"][0];
+		NSString *final = [end stringByConvertingHTMLToPlainText];
 		NSString *final2 = [final stringByReplacingOccurrencesOfString:@"XYZNEWLINE" withString:@"\n"];
 		final2 = [final2 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
