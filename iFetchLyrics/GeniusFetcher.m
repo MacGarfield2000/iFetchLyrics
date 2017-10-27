@@ -23,17 +23,14 @@
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
 
 
-	if ([cont rangeOfString:@"<lyrics class"].location == NSNotFound) {
+	if ([cont rangeOfString:@"<div class=\"lyrics\">"].location == NSNotFound) {
 		return nil;
 	}
 
 
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
-		NSArray *comp = [newline componentsSeparatedByString:@"<lyrics class"];
-		NSString *start = comp[1];
-
-		start = [start componentsSeparatedByString:@"<p>"][1];
+		NSString *start = [newline componentsSeparatedByString:@"<div class=\"lyrics\">"][1];
 
 		NSString *end = [start componentsSeparatedByString:@"</p>"][0];
 
