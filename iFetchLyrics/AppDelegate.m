@@ -101,8 +101,11 @@
 				if (!lyrics)
 					fail++;
 			}
-		} @catch (id e) {
-			NSRunAlertPanel(@"Error", @"Sorry an unrecoverable error occured. Please open a ticket at github with the song information.", @"OK", nil, nil);
+		} @catch (NSException *e) {
+            dispatch_sync(dispatch_get_main_queue(), ^
+            {
+                NSRunAlertPanel(@"Error", [@"Sorry an unrecoverable error occured. Please open a ticket at github with the song information." stringByAppendingString:e.description], @"OK", nil, nil);
+            });
 			exit(1);
 		}
 
@@ -151,12 +154,11 @@
 	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
 	self.playlists = [[(iTunes.sources)[0] userPlaylists] arrayByApplyingSelector:@selector(name)];
 	self.ignoreWithLyrics = 1;
-	
+	 
 
 #ifdef DEBUG
 	for (LyricsFetcher *fetcher in self.fetchers)
 	{
-		if ([[fetcher className] rangeOfString:@"365"].location != NSNotFound)
 		{
 			NSString *l0 = [[fetcher fetchLyricsForArtist:@"Headspace"
 													album:@""
@@ -188,11 +190,13 @@
 			NSLog([l2 substringToIndex:10]);
 		}
 
-		NSString *l3 = [fetcher fetchLyricsForArtist:@"mondayssuck"
-												album:@""
-												title:@"garfieldrocksthefloor"];
+        {
+            NSString *l3 = [fetcher fetchLyricsForArtist:@"mondayssuck"
+                                                   album:@""
+                                                   title:@"garfieldrocksthefloor"];
 
-		assert(!l3);
+            assert(!l3);
+        }
 	}
 #endif
 }

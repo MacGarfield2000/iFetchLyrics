@@ -51,7 +51,6 @@
 			[tmp appendString:@"\n"];
 		}
 
-		[tmp deleteCharactersInRange:NSMakeRange(tmp.length-3, 3)];
 		NSString *final2 = [tmp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
 		if ([final2 length] == 0)

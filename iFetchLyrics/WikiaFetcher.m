@@ -36,7 +36,8 @@
 		else
 			start = comp[1];
 		NSString *end = [start componentsSeparatedByString:@"<!--"][0];
-		NSString *final = [end stringByConvertingHTMLToPlainText];
+        NSString *end2 = [end componentsSeparatedByString:@"<div class='lyricsbreak'>"][0];
+		NSString *final = [end2 stringByConvertingHTMLToPlainText];
 		NSString *final2 = [final stringByReplacingOccurrencesOfString:@"XYZNEWLINE" withString:@"\n"];
 		final2 = [final2 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
