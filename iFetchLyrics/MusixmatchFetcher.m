@@ -34,18 +34,25 @@
 	@try {
 		NSString *start = [cont substringFromIndex:[cont rangeOfString:@"mxm-lyrics__content"].location+22];
 		NSString *end = [start componentsSeparatedByString:@"</p>"][0];
-        NSString *start2 = [start substringFromIndex:[start rangeOfString:@"mxm-lyrics__content"].location+22];
-        NSString *end2 = [start2 componentsSeparatedByString:@"</p>"][0];
+        NSString *final = [end copy];
+        if ([start containsString:@"mxm-lyrics__content"])
+        {
+            NSString *start2 = [start substringFromIndex:[start rangeOfString:@"mxm-lyrics__content"].location+22];
+            NSString *end2 = [start2 componentsSeparatedByString:@"</p>"][0];
         
-        NSString *final = [end stringByAppendingString:end2];
+            final = [final stringByAppendingString:end2];
+        }
 
 
 		NSString *final1 = [final stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *final2 = [final1 stringByReplacingOccurrencesOfString:@"\n" withString:@"XYZNEWLINE"];
+        NSString *final3 = [final2 stringByConvertingHTMLToPlainText];
+        NSString *final4 = [final3 stringByReplacingOccurrencesOfString:@"XYZNEWLINE" withString:@"\n"];
 
-		if ([final1 length] == 0)
+		if ([final4 length] == 0)
 			return nil;
 
-		return final1;
+		return final4;
 
 	} @catch (id e) {
 		return nil;

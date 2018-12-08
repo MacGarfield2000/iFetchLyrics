@@ -25,7 +25,7 @@
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
 
 
-	if ([cont rangeOfString:@"<div class=\"fb-quotable\">"].location == NSNotFound) {
+	if ([cont rangeOfString:@"<div class=\"lyrics-body\">"].location == NSNotFound) {
 		return nil;
 	}
 
@@ -33,7 +33,8 @@
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
 		newline = [newline stringByReplacingOccurrencesOfString:@"<br />" withString:@"XYZNEWLINE"];
-		NSArray *comp = [newline componentsSeparatedByString:@"<div class=\"fb-quotable\">"];
+        newline = [newline stringByReplacingOccurrencesOfString:@"<br/>" withString:@"XYZNEWLINE"];
+		NSArray *comp = [newline componentsSeparatedByString:@"<div class=\"lyrics-body\">"];
 		NSString *start = comp[1];
 
 
@@ -45,8 +46,9 @@
 
 		NSMutableString *tmp = [NSMutableString new];
 		for (NSString *line in [final componentsSeparatedByString:@"XYZNEWLINE"]) {
-
-			if ([line rangeOfString:@"(Thanks to "].location == NSNotFound)
+            if ([line rangeOfString:@" Video:"].location != NSNotFound)
+                [tmp appendString:[[line componentsSeparatedByString:@" Video:"][1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+            else if ([line rangeOfString:@"(Thanks to "].location == NSNotFound)
 				[tmp appendString:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 			[tmp appendString:@"\n"];
 		}

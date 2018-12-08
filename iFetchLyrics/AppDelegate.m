@@ -19,7 +19,6 @@
 #import "ElyricsFetcher.h"
 #import "MusixmatchFetcher.h"
 #import "AzlyricsFetcher.h"
-#import "BeelyricsFetcher.h"
 #import "LyricsmaniaFetcher.h" // blocks after a while ;(
 
 
@@ -136,13 +135,12 @@
                                                      [MetroFetcher new],
                                                      [Lyricsn7plFetcher new],
                                                      [LyrsterFetcher new],
-													 [LyricsmodeFetcher new],
+                                                     [LyricsmodeFetcher new],
                                                      [MusixmatchFetcher new],
-                                                     [BeelyricsFetcher new],
-													 [GeniusFetcher new],
-													 [SonglyricsFetcher new],
-													 [ElyricsFetcher new],
-													 [AzlyricsFetcher new],
+                                                     [GeniusFetcher new],
+                                                     [SonglyricsFetcher new],
+                                                     [ElyricsFetcher new],
+                                                     [AzlyricsFetcher new],
                                                      [MusixmatchFetcher new],
 													 [LyricsmaniaFetcher new] // blocks after a while ;(
 												 ]];
@@ -160,25 +158,28 @@
 	for (LyricsFetcher *fetcher in self.fetchers)
 	{
 		{
-			NSString *l0 = [[fetcher fetchLyricsForArtist:@"Headspace"
-													album:@""
-													title:@"Polluted Alcohol"] lowercaseString];
+            NSLog(@"\n\n");
+            NSLog(fetcher.className);
+            NSLog(@"\n\n");
+            NSString *l0 = [[fetcher fetchLyricsForArtist:@"Metallica"
+                                                    album:@""
+                                                    title:@"Fuel"] lowercaseString];
 
 
-			assert(l0 && [l0 rangeOfString:@"=="].location == NSNotFound);
-			assert(l0 && [l0 rangeOfString:@"comatosed"].location != NSNotFound);
-			assert([[l0 componentsSeparatedByString:@"\n"] count] > 5);
-			NSLog([l0 substringToIndex:10]);
+            assert(l0 && [l0 rangeOfString:@"=="].location == NSNotFound);
+            assert(l0 && [l0 rangeOfString:@"gasoline"].location != NSNotFound);
+            assert([[l0 componentsSeparatedByString:@"\n"] count] > 5);
+            NSLog([l0 substringToIndex:100]);
 
-            NSString *l1 = [[fetcher fetchLyricsForArtist:@"The White Stripes"
-											 album:@""
-											 title:@"Seven Nation Army"] lowercaseString];
+            NSString *l1 = [[fetcher fetchLyricsForArtist:@"Rammstein"
+                                             album:@""
+                                             title:@"Du Hast"] lowercaseString];
 
 
-			assert(l1 && [l1 rangeOfString:@"=="].location == NSNotFound);
-			assert(l1 && [l1 rangeOfString:@"queen"].location != NSNotFound);
-			assert([[l1 componentsSeparatedByString:@"\n"] count] > 5);
-			NSLog([l1 substringToIndex:10]);
+            assert(l1 && [l1 rangeOfString:@"=="].location == NSNotFound);
+            assert(l1 && [l1 rangeOfString:@"gefragt"].location != NSNotFound);
+            assert([[l1 componentsSeparatedByString:@"\n"] count] > 5);
+            NSLog([l1 substringToIndex:100]);
 
 			NSString *l2 = [[fetcher fetchLyricsForArtist:@"Garbage"
 											 album:@""
@@ -187,7 +188,7 @@
 			assert(l2 && [l2 rangeOfString:@"=="].location == NSNotFound);
 			assert(l2 && [l2 rangeOfString:@"angels"].location != NSNotFound);
 			assert([[l2 componentsSeparatedByString:@"\n"] count] > 5);
-			NSLog([l2 substringToIndex:10]);
+			NSLog([l2 substringToIndex:100]);
 		}
 
         {
