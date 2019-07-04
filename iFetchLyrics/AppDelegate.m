@@ -12,7 +12,6 @@
 #import "WikiaFetcher.h"
 #import "MetroFetcher.h"
 #import "Lyricsn7plFetcher.h"
-#import "LyrsterFetcher.h"
 #import "LyricsmodeFetcher.h"
 #import "GeniusFetcher.h"
 #import "SonglyricsFetcher.h"
@@ -134,7 +133,6 @@
                                                      [WikiaFetcher new],
                                                      [MetroFetcher new],
                                                      [Lyricsn7plFetcher new],
-                                                     [LyrsterFetcher new],
                                                      [LyricsmodeFetcher new],
                                                      [MusixmatchFetcher new],
                                                      [GeniusFetcher new],
@@ -169,7 +167,7 @@
             assert(l0 && [l0 rangeOfString:@"=="].location == NSNotFound);
             assert(l0 && [l0 rangeOfString:@"gasoline"].location != NSNotFound);
             assert([[l0 componentsSeparatedByString:@"\n"] count] > 5);
-            NSLog([l0 substringToIndex:100]);
+//            NSLog([l0 substringToIndex:100]);
 
             NSString *l1 = [[fetcher fetchLyricsForArtist:@"Rammstein"
                                              album:@""
@@ -179,7 +177,7 @@
             assert(l1 && [l1 rangeOfString:@"=="].location == NSNotFound);
             assert(l1 && [l1 rangeOfString:@"gefragt"].location != NSNotFound);
             assert([[l1 componentsSeparatedByString:@"\n"] count] > 5);
-            NSLog([l1 substringToIndex:100]);
+//            NSLog([l1 substringToIndex:100]);
 
 			NSString *l2 = [[fetcher fetchLyricsForArtist:@"Garbage"
 											 album:@""
@@ -188,15 +186,16 @@
 			assert(l2 && [l2 rangeOfString:@"=="].location == NSNotFound);
 			assert(l2 && [l2 rangeOfString:@"angels"].location != NSNotFound);
 			assert([[l2 componentsSeparatedByString:@"\n"] count] > 5);
-			NSLog([l2 substringToIndex:100]);
+//            NSLog([l2 substringToIndex:100]);
 		}
 
         {
-            NSString *l3 = [fetcher fetchLyricsForArtist:@"mondayssuck"
-                                                   album:@""
-                                                   title:@"garfieldrocksthefloor"];
-
+            NSString *l3 = [fetcher fetchLyricsForArtist:@"mondayssuck" album:@"" title:@"garfieldrocksthefloor"];
             assert(!l3);
+            NSString *l4 = [fetcher fetchLyricsForArtist:@"" album:@"" title:@"garfieldrocksthefloor"];
+            assert(!l4);
+            NSString *l5 = [fetcher fetchLyricsForArtist:@"mondayssuck" album:@"" title:@""];
+            assert(!l5);
         }
 	}
 #endif

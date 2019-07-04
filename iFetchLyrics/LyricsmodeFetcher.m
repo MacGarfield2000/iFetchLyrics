@@ -13,6 +13,10 @@
 	sleep(RandomFloatBetween(0.5,1.5));
 	if ([[artist lowercaseString] hasPrefix:@"the "])
 		artist = [artist substringFromIndex:4];
+    
+    if (!artist.length)
+        return nil;
+    
 	NSString *urlStr = [NSString stringWithFormat:@"http://www.lyricsmode.com/lyrics/%@/%@/%@.html", [artist substringToIndex:1], artist, title];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@"_"];
 	urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -23,14 +27,14 @@
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
 
 
-	if ([cont rangeOfString:@"<p id=\"lyrics_text\" class=\"ui-annotatable"].location == NSNotFound) {
+	if ([cont rangeOfString:@"id=\"lyrics_text\""].location == NSNotFound) {
 		return nil;
 	}
 
 
 	@try {
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br />" withString:@"XYZNEWLINE"];
-		NSArray *comp = [newline componentsSeparatedByString:@"<p id=\"lyrics_text\" class=\"ui-annotatable"];
+		NSArray *comp = [newline componentsSeparatedByString:@"id=\"lyrics_text\""];
 		NSString *start = comp[1];
         start = [start componentsSeparatedByString:@">"][1];
 		NSString *end = [start componentsSeparatedByString:@"</p>"][0];

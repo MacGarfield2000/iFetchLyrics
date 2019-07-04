@@ -16,7 +16,9 @@
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
-	if ([cont rangeOfString:@"<div id=\"lyrics-body-text\""].location == NSNotFound || [cont rangeOfString:@"Unfortunately, we don't have the lyrics"].location != NSNotFound) {
+	if ([cont rangeOfString:@"<div id=\"lyrics-body-text\""].location == NSNotFound ||
+        [cont rangeOfString:@"Unfortunately, we don't have the lyrics"].location != NSNotFound ||
+        [cont rangeOfString:@"<p class='verse'>"].location == NSNotFound) {
 		return nil;
 	}
 
