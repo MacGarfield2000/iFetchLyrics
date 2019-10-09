@@ -15,6 +15,7 @@ iFetchLyrics can automatically fetch the lyrics for  songs in your macOS Music L
 
 **Download:** Download v2.0 of iFetchLyrics [here](https://github.com/MacGarfield2000/iFetchLyrics/raw/master/BinaryReleases/iFetchLyrics-2.0.zip)
 
+Old versions:
 
 Download v1.10 of iFetchLyrics for macOS 10.12 - 10.14 [here](https://github.com/MacGarfield2000/iFetchLyrics/raw/master/BinaryReleases/iFetchLyrics-1.8.zip)
 
