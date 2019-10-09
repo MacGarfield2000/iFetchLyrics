@@ -14,7 +14,7 @@
 	sleep(RandomFloatBetween(0.5,1.5));
 	if (!artist || ![artist length])
 		return nil;
-	NSString *urlStr = [[[[NSString stringWithFormat:@"http://www.lyrics.n7.pl/artists/%@/%@/%@/", [artist substringToIndex:1], artist, title] stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *urlStr = [[[[NSString stringWithFormat:@"http://www.lyrics.n7.pl/artists/%@/%@/%@/", [artist substringToIndex:1], artist, title] stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSError *err;

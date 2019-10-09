@@ -12,7 +12,7 @@
 // 47% succ 5200 fail 5800
 - (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
-	NSString *urlStr = [[[[NSString stringWithFormat:@"http://www.metrolyrics.com/%@-lyrics-%@.html", title, artist] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *urlStr = [[[[NSString stringWithFormat:@"http://www.metrolyrics.com/%@-lyrics-%@.html", title, artist] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
 	NSURL *url = [NSURL URLWithString:urlStr];
 	NSString *cont = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:NULL];
@@ -26,8 +26,8 @@
 		NSString *newline = [cont stringByReplacingOccurrencesOfString:@"<br/>" withString:@"XYZNEWLINE"];
 		NSString *newline2 = [newline stringByReplacingOccurrencesOfString:@"<br>" withString:@"XYZNEWLINE"];
 		NSString *start = [newline2 substringFromIndex:[newline2 rangeOfString:@"<p class='verse'>"].location+17];
-		NSString *end = [start componentsSeparatedByString:@"<p class=\"writers\">"][0];
-        NSString *end2 = [end componentsSeparatedByString:@"<div class=\"lyrics-bottom\">"][0];
+		NSString *end = [start componentsSeparatedByString:@"</sd-lyricbody>"][0];
+        NSString *end2 = [end componentsSeparatedByString:@"<div class=\"big-box bottom\">"][0];
 		NSString *final = [end2 stringByReplacingOccurrencesOfString:@"<p class='verse'>" withString:@"XYZNEWLINE"];
 		NSString *final1 = [final stringByReplacingOccurrencesOfString:@"</p>" withString:@"XYZNEWLINE"];
         if ([final1 rangeOfString:@"<!--WIDGET - RELATED-->"].location != NSNotFound &&

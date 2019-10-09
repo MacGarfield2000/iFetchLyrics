@@ -11,7 +11,7 @@
 
 - (NSString *)__fetchLyricsForArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title {
 	sleep(RandomFloatBetween(0.5,1.5));
-	NSString *urlStr = [[[[NSString stringWithFormat:@"https://www.musixmatch.com/lyrics/%@/%@", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *urlStr = [[[[NSString stringWithFormat:@"https://www.musixmatch.com/lyrics/%@/%@", artist, title] stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 
 	NSURL *url = [NSURL URLWithString:urlStr];
     

@@ -15,7 +15,7 @@
 
 	NSString *urlStr = [NSString stringWithFormat:@"http://www.songlyrics.com/%@/%@-lyrics/", artist, title];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-	urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@"?" withString:@"%3F"];
 	urlStr = [urlStr lowercaseString];
 

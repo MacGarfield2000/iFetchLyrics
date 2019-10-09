@@ -14,7 +14,7 @@
 	sleep(RandomFloatBetween(0.5,1.5));
 	NSString *urlStr = [NSString stringWithFormat:@"http://lyrics.wikia.com/%@:%@", artist, title];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-	urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@"?" withString:@"%3F"];
 
 	NSURL *url = [NSURL URLWithString:urlStr];

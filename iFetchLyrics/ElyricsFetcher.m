@@ -15,9 +15,12 @@
 	if ([[artist lowercaseString] hasPrefix:@"the "])
 		artist = [artist substringFromIndex:4];
 
+    if (!artist.length)
+        return nil;
+    
 	NSString *urlStr = [NSString stringWithFormat:@"http://www.elyrics.net/read/%@/%@-lyrics/%@-lyrics.html", [artist substringToIndex:1], artist, title];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-	urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	urlStr = [urlStr stringByReplacingOccurrencesOfString:@"?" withString:@"%3F"];
 	urlStr = [urlStr lowercaseString];
 
