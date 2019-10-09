@@ -5,7 +5,7 @@
 //  Public Domain
 //
 
-#import "iTunes.h"
+#import "Music.h"
 #import "NSMutableArray+Shuffling.h"
 #import <ScriptingBridge/ScriptingBridge.h>
 #import "AppDelegate.h"
@@ -48,8 +48,8 @@
 	[self.window setContentView:self.view2];
 
 	NSString *playlistName = (self.playlists)[self.selectedPlaylist];
-	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
-	iTunesPlaylist *playlist = [[(iTunes.sources)[0] userPlaylists] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", playlistName]][0];
+	MusicApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.Music"];
+	MusicPlaylist *playlist = [[(iTunes.sources)[0] userPlaylists] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == %@", playlistName]][0];
 	SBElementArray *tracks = [playlist tracks];
 
 	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -57,7 +57,7 @@
 		int all = 0, skip = 0, succ = 0, fail = 0;
 
 		@try {
-			for (iTunesTrack *track in tracks) {
+			for (MusicTrack *track in tracks) {
 				if (!self.running)
 					break;
 				
@@ -102,7 +102,11 @@
 		} @catch (NSException *e) {
             dispatch_sync(dispatch_get_main_queue(), ^
             {
-                NSRunAlertPanel(@"Error", [@"Sorry an unrecoverable error occured. Please open a ticket at github with the song information." stringByAppendingString:e.description], @"OK", nil, nil);
+                NSAlert *alert = [[NSAlert alloc] init];
+                alert.messageText = @"Error";
+                alert.informativeText = [@"Sorry an unrecoverable error occured. Please open a ticket at github with the song information." stringByAppendingString:e.description];
+                [alert addButtonWithTitle:@"OK"];
+                [alert runModal];
             });
 			exit(1);
 		}
@@ -147,7 +151,7 @@
 
 	[self.window setContentView:self.view1];
 
-	iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+	MusicApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.Music"];
 	self.playlists = [[(iTunes.sources)[0] userPlaylists] arrayByApplyingSelector:@selector(name)];
 	self.ignoreWithLyrics = 1;
 	 
